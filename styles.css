@@ -1,0 +1,129 @@
+/* ===== ESTILOS GENERALES ===== */
+body {
+    font-family: 'Rajdhani', sans-serif;
+    background-color: #080c14;
+    color: #f1f5f9;
+    overflow-x: hidden;
+    user-select: none;
+}
+
+.font-orbitron {
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* ===== TABLERO FIJO =====
+   Tamaño fijo y celdas que no se estiran al cambiar piezas o textos. */
+.board-container {
+    width: min(90vw, 440px);
+    height: min(90vw, 440px);
+    box-sizing: border-box;
+    margin: 0 auto;
+    position: relative;
+    flex-shrink: 0;
+    box-shadow: 0 0 30px rgba(0, 242, 254, 0.25);
+    border: 4px solid #1e293b;
+    border-radius: 16px;
+    overflow: hidden;
+    background-color: #0f172a;
+}
+
+.chess-grid {
+    display: grid;
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    grid-template-rows: repeat(8, minmax(0, 1fr));
+    width: 100%;
+    height: 100%;
+}
+
+.square {
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(1.2rem, 4vw, 2.2rem);
+    line-height: 1;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.15s ease;
+}
+
+.square.light { background-color: #1e293b; }
+.square.dark  { background-color: #0b1324; }
+
+/* Casilla seleccionada */
+.square.selected {
+    background-color: rgba(0, 242, 254, 0.45) !important;
+    box-shadow: inset 0 0 12px #00f2fe;
+}
+
+/* Punto verde de movimiento posible */
+.square.highlight::after {
+    content: '';
+    width: 18px;
+    height: 18px;
+    background-color: #00ff87;
+    border-radius: 50%;
+    position: absolute;
+    box-shadow: 0 0 10px #00ff87;
+    opacity: 0.85;
+}
+
+.chess-piece {
+    line-height: 1;
+    transition: transform 0.15s ease;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.7));
+    pointer-events: none;
+}
+
+/* ===== BOTONES ===== */
+.cyber-btn {
+    background: linear-gradient(135deg, #7f00ff, #00f2fe);
+    transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.cyber-btn:hover {
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.7);
+    transform: translateY(-2px);
+}
+
+.cyber-btn:active {
+    transform: translateY(0);
+}
+
+.translate-btn {
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* ===== RESPUESTAS: colores de acierto y error ===== */
+.opt-correct {
+    background-color: rgba(16, 185, 129, 0.2) !important;
+    border-color: #10b981 !important;
+    color: #bbf7d0 !important;
+}
+
+.opt-wrong {
+    background-color: rgba(127, 29, 29, 0.4) !important;
+    border-color: #f87171 !important;
+    color: #fecaca !important;
+}
+
+/* ===== SUBTÍTULOS EN ESPAÑOL ===== */
+.sub-es {
+    display: block;
+    font-size: 0.75rem;
+    color: #94a3b8;
+    font-weight: 500;
+    line-height: 1.1;
+}
+
+/* ===== BARRA DE DESPLAZAMIENTO ===== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #080c14; }
+::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
